@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-pearl: #F2F1EC;
+  --color-pearl-light: #FAF9F6;
+  --color-eucalyptus-light: #E2E6E2;
+  --color-eucalyptus-deep: #21443D;
+  --color-eucalyptus-darker: #17322D;
+  --color-forest-text: #202624;
+  --color-slate-muted: #727A76;
+  --color-warm-bronze: #A77C50;
+  --color-bronze-light: #C4986E;
+  --color-bronze-subtle: rgba(167, 124, 80, 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: #F2F1EC;
+    color: #202624;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Signature Image-Mask Wipe Reveal */
+@keyframes maskWipeVertical {
+  0% {
+    clip-path: inset(100% 0 0 0);
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes maskWipeHorizontal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mask-wipe-active {
+  animation: maskWipeVertical 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mask-wipe-horizontal {
+  animation: maskWipeHorizontal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-wipe-active,
+  .mask-wipe-horizontal {
+    animation: none !important;
+    clip-path: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Subtle editorial scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F2F1EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #727A76;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #21443D;
+}
